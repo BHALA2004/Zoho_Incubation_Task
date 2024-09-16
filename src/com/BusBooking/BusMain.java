@@ -48,10 +48,12 @@ public class BusMain {
                     String x1 = scanner.next();
                     System.out.println("Enter Bus No:");
                     int value = scanner.nextInt();
+
                     String cancelled =busReservation.cancelTickets(BusReservation.waitingList,BusReservation.BookList,x1,value,busDetails);
                     if(cancelled.equals("Ticket Cancel")){
                         System.out.println("Ticket Cancel Successful");
                     }
+
                     break;
 
                 case 3:

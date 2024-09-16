@@ -8,8 +8,12 @@ public class BusReservation {
     static ArrayList<PassengerDetails> waitingList = new ArrayList<>();
 
     public static void print(ArrayList<PassengerDetails> Display){
+        try{
         for(PassengerDetails p : Display){
             System.out.println(p.toString());
+        }}
+        catch (Exception e){
+            System.out.println("No One is Book in this Bus");
         }
 
     }
