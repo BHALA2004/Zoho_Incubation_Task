@@ -4,6 +4,28 @@ import java.util.ArrayList;
 
 public class TaxiBookingImplementation {
 
+    public ArrayList<TaxiDetails> findAvailableTaxi(ArrayList<TaxiDetails> taxiDetails,int pickupTime){
+        ArrayList<TaxiDetails> AvailableTaxi = new ArrayList<>();
+        for(TaxiDetails t : taxiDetails){
+            if(pickupTime >=t.getStartTime()){
+                AvailableTaxi.add(t);
+            }
+        }
+        return AvailableTaxi;
+    }
+
+    public TaxiDetails findSmallestTaxi(ArrayList<TaxiDetails> taxiDetails,char startPoint){
+        int min = Integer.MAX_VALUE;TaxiDetails taxi = null;
+        for(TaxiDetails t : taxiDetails){
+            if(min>findDistance(startPoint,t.getStartPoint())){
+                min=Math.min(min,findDistance(startPoint,t.getStartPoint()));
+                taxi=t;
+            }
+        }
+        return taxi;
+
+    }
+
 
 
 
@@ -15,19 +37,6 @@ public class TaxiBookingImplementation {
 
     }
 
-
-    public TaxiDetails findNearesttaxi(char startPoint,ArrayList<TaxiDetails> taxiDetails){
-        TaxiDetails details = null;
-        int min = Integer.MAX_VALUE;
-        for(TaxiDetails t : taxiDetails){
-            if(min>findDistance(startPoint,t.getStartPoint())){
-                min = Math.min(min,findDistance(startPoint,t.getStartPoint()));
-                details = t;
-            }
-        }
-        return details;
-
-    }
 
     public ArrayList<TaxiDetails> findTaxi(int startPoint, int pickupTime, ArrayList<TaxiDetails> taxiDetailsArrayList){
        ArrayList<TaxiDetails> taxiDetailsList = new ArrayList<>();

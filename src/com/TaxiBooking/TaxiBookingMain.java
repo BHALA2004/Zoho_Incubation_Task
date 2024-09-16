@@ -25,7 +25,6 @@ public class TaxiBookingMain {
             int switchValue = scanner.nextInt();
             switch (switchValue){
                 case 1:
-                    customerid+=1;
                     System.out.println("Enter Start Point :");
                     char startpoint  = scanner.next().charAt(0);
                     System.out.println("Enter End point :");
@@ -34,6 +33,7 @@ public class TaxiBookingMain {
                     int pickupTime = scanner.nextInt();
                     ArrayList<TaxiDetails> taxiDetailsList = taxiBookingImplementation.findTaxi(startpoint,pickupTime,taxiDetailsArrayList);
                     if(!taxiDetailsList.isEmpty()){
+                        customerid+=1;
                         BookingId+=1;
                     Collections.sort(taxiDetailsList,(a,b)->a.getTaxiCharges()-b.getTaxiCharges());
                     CustomerDetails customerDetails = new CustomerDetails(customerid,startpoint,endpoint,pickupTime,taxiBookingImplementation.findCustomerCharges(startpoint,endpoint),taxiDetailsList.get(0).getTaxiNo());
@@ -47,6 +47,26 @@ public class TaxiBookingMain {
                         System.out.println("Booking Confirm");
                     }
                     else {
+                        ArrayList<TaxiDetails> taxiDetails = taxiBookingImplementation.findAvailableTaxi(taxiDetailsArrayList,pickupTime);
+                        if(!taxiDetails.isEmpty()){
+                            TaxiDetails taxi = taxiBookingImplementation.findSmallestTaxi(taxiDetails,startpoint);
+                            taxi.setStartPoint(startpoint);
+                            customerid+=1;
+                            BookingId+=1;
+                            CustomerDetails customerDetails = new CustomerDetails(customerid,startpoint,endpoint,pickupTime,taxiBookingImplementation.findCustomerCharges(startpoint,endpoint),taxi.getTaxiNo());
+                            customerDetailsArrayList.add(customerDetails);
+                            int taxiCharges =taxiBookingImplementation.findTaxiCharges(startpoint,endpoint,taxi);
+                            int taxiTime = taxiBookingImplementation.findTime(startpoint,endpoint,taxi);
+                            taxi.setStartPoint(customerDetails.getEndPoint());
+                            taxi.setTaxiCharges(taxiCharges);
+                            taxi.setStartTime(taxiTime);
+                            bookingDetails.add(new BookingDetails(BookingId,customerDetails,taxi));
+                            System.out.println("Booking Confirm");
+
+                        }
+                        else {
+                            System.out.println("Taxi Not available");
+                        }
 
 
                     }
