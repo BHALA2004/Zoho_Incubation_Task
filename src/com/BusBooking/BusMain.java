@@ -1,6 +1,5 @@
 package com.BusBooking;
 
-import com.Booking.Passenger;
 
 import java.util.ArrayList;
 import java.util.BitSet;
