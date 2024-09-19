@@ -1,8 +1,6 @@
 package com.trainBooking;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class TrainMain {
@@ -132,6 +130,83 @@ public class TrainMain {
                     }
                     break;
                 case 2:
+                    System.out.println("Enter train No:");
+                    int trainNo = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Enter Train Name:");
+                    String trainNaam = scanner.nextLine();
+                    System.out.println("Enter Customer Id");
+                    int cusId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Enter Customer Name:");
+                    String cusName = scanner.nextLine();
+                    PassengerDetails m = trainImplementation.findBerth(trainNo,trainNaam,cusId,cusName,passengerDetailsArrayList);
+                    TrainDetails t = trainImplementation.findtrain(trainDetailsArrayList,trainNaam);
+                    if(m.getPassengerBerthPreference()=='L'){
+                        passengerDetailsArrayList.remove(m);
+                        int lower = t.getLowerBerthCapacity()+1;
+                        t.setLowerBerthCapacity(lower);
+                        PassengerDetails passengerDetails = new PassengerDetails() ;
+                        if(t.getRACCapacity()!=1){
+                            passengerDetails = trainImplementation.findRacpassenger(passengerDetailsArrayList,'R');
+                            passengerDetails.setPassengerBerthPreference('L');
+                            t.setLowerBerthCapacity(t.getLowerBerthCapacity()-1);
+                        } else if (t.getWaitingListCapacity()!=1) {
+                            passengerDetails =trainImplementation.findRacpassenger(passengerDetailsArrayList,'W');
+                            passengerDetails.setPassengerBerthPreference('L');
+                            t.setLowerBerthCapacity(t.getLowerBerthCapacity()-1);
+                        }
+                        System.out.println("Booking Cancelled");
+
+
+                    } else if (m.getPassengerBerthPreference()=='M') {
+                        passengerDetailsArrayList.remove(m);
+                        int middle = t.getMiddleBerthCapacity()+1;
+                        t.setMiddleBerthCapacity(middle);
+                        PassengerDetails passengerDetails = new PassengerDetails() ;
+                        if(t.getRACCapacity()!=1){
+                            passengerDetails = trainImplementation.findRacpassenger(passengerDetailsArrayList,'R');
+                            passengerDetails.setPassengerBerthPreference('M');
+                            t.setMiddleBerthCapacity(t.getMiddleBerthCapacity()-1);
+                        } else if (t.getWaitingListCapacity()!=1) {
+                            passengerDetails =trainImplementation.findRacpassenger(passengerDetailsArrayList,'W');
+                            passengerDetails.setPassengerBerthPreference('M');
+                            t.setMiddleBerthCapacity(t.getMiddleBerthCapacity()-1);
+                        }
+                        System.out.println("Booking Cancelled");
+                    } else if (m.getPassengerBerthPreference()=='U') {
+                        passengerDetailsArrayList.remove(m);
+                        int upper = t.getUpperBerthCapacity()+1;
+                        t.setUpperBerthCapacity(upper);
+                        PassengerDetails passengerDetails = new PassengerDetails() ;
+                        if(t.getRACCapacity()!=1){
+                            passengerDetails = trainImplementation.findRacpassenger(passengerDetailsArrayList,'R');
+                            passengerDetails.setPassengerBerthPreference('U');
+                            t.setUpperBerthCapacity(t.getUpperBerthCapacity()-1);
+                        } else if (t.getWaitingListCapacity()!=1) {
+                            passengerDetails =trainImplementation.findRacpassenger(passengerDetailsArrayList,'W');
+                            passengerDetails.setPassengerBerthPreference('U');
+                            t.setUpperBerthCapacity(t.getUpperBerthCapacity()-1);
+                        }
+                        System.out.println("Booking Cancelled");
+                    } else if (m.getPassengerBerthPreference()=='R') {
+                        passengerDetailsArrayList.remove(m);
+                       int RACC =t.getRACCapacity()+1;
+                       t.setRACCapacity(RACC);
+                        PassengerDetails passengerDetails = new PassengerDetails() ;
+                         if (t.getWaitingListCapacity()!=1) {
+                            passengerDetails =trainImplementation.findRacpassenger(passengerDetailsArrayList,'W');
+                             passengerDetails.setPassengerBerthPreference('R');
+                             t.setRACCapacity(t.getRACCapacity()-1);
+                        }
+                        System.out.println("Booking Cancelled");
+                    } else if (m.getPassengerBerthPreference()=='W') {
+                        passengerDetailsArrayList.remove(m);
+                        int wait = t.getWaitingListCapacity()+1;
+                        t.setWaitingListCapacity(wait);
+                        System.out.println("Booking Cancelled");
+                    }
+
                     break;
                 case 3:
                     System.out.println(trainDetailsArrayList.toString());break;

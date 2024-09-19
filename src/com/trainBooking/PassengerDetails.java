@@ -18,6 +18,10 @@ public class PassengerDetails {
         TrainNo = trainNo;
     }
 
+    public PassengerDetails() {
+
+    }
+
     public int getPassengerId() {
         return PassengerId;
     }

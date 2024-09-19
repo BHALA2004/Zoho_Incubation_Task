@@ -78,5 +78,25 @@ public class TrainImplementation {
         return arrayList;
     }
 
+    public PassengerDetails findBerth(int trainNo,String trainName,int cusId,String cusName,ArrayList<PassengerDetails> passengerDetailsArrayList){
+        for(PassengerDetails p : passengerDetailsArrayList){
+            if(p.getTrainNo()==trainNo && p.getTrainName().equals(trainName) && p.getPassengerId()==cusId && p.getPassengerName().equals(cusName)){
+                return p;
+            }
+        }
+
+        return null;
+    }
+
+    public PassengerDetails findRacpassenger(ArrayList<PassengerDetails> passengerDetails,char berth){
+        for(PassengerDetails p : passengerDetails){
+            if(p.getPassengerBerthPreference()==berth){
+                return p;
+            }
+        }
+        return null;
+    }
+
+
 
 }
