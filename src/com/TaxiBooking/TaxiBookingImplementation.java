@@ -26,10 +26,6 @@ public class TaxiBookingImplementation {
 
     }
 
-
-
-
-
     public void printCustomer(ArrayList<CustomerDetails> customerDetailsArrayList){
         for(CustomerDetails c : customerDetailsArrayList){
             System.out.println(c.toString());

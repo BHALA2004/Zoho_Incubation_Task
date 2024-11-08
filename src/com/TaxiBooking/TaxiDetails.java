@@ -13,6 +13,7 @@ public class TaxiDetails {
         this.taxiCharges = taxiCharges;
     }
 
+
     public int getTaxiNo() {
         return taxiNo;
     }

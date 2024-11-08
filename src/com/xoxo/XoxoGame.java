@@ -7,7 +7,6 @@ public class XoxoGame {
 
         Board[rowX][columnX]=b;
 
-
     }
 
     public static void print(char[][] Board){
