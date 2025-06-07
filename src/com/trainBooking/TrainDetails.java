@@ -1,5 +1,7 @@
 package com.trainBooking;
 
+import java.util.ArrayList;
+
 public class TrainDetails {
     private int trainNo;
     private String TrainName;
@@ -8,6 +10,16 @@ public class TrainDetails {
     private int UpperBerthCapacity;
     private int RACCapacity;
     private int WaitingListCapacity;
+
+    private ArrayList<PassengerDetails> passengerDetails;
+
+    public ArrayList<PassengerDetails> getPassengerDetails() {
+        return passengerDetails;
+    }
+
+    public void setPassengerDetails(ArrayList<PassengerDetails> passengerDetails) {
+        this.passengerDetails = passengerDetails;
+    }
 
     public TrainDetails(int trainNo, String trainName, int lowerBerthCapacity, int middleBerthCapacity, int upperBerthCapacity, int RACCapacity, int waitingListCapacity) {
         this.trainNo = trainNo;

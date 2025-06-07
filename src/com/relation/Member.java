@@ -1,8 +1,6 @@
 package com.relation;
-
 import java.util.ArrayList;
 import java.util.List;
-
 public class Member {
 
      String name;
@@ -116,9 +114,6 @@ public class Member {
 
     }
 
-
-
-
-    }
+ }
 
 

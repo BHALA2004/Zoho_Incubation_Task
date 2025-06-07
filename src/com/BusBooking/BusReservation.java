@@ -48,7 +48,6 @@ public class BusReservation {
             if(busDetails.get(m).getBusCapacity()-1>=0){
                 BookList.add(passengerDetails);
                 busDetails.get(m).setBusCapacity(busDetails.get(m).getBusCapacity()-1);
-
                 return "Book Successful";
             }
             else if(busDetails.get(m).getBusWaitingListCapacity()-1>=0){

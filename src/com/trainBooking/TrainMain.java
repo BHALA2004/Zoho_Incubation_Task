@@ -1,6 +1,7 @@
 package com.trainBooking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TrainMain {
@@ -55,30 +56,35 @@ public class TrainMain {
                                 PassengerId+=1;
                                 passengerDetailsArrayList.add(new PassengerDetails(PassengerId,passengerName,passengerAge,passengerBerth, trainDetails.getTrainName(), trainDetails.getTrainNo()));
                                 trainImplementation.print(passengerBerth);
+                                trainDetails.setPassengerDetails(passengerDetailsArrayList);
                             } else if (berth.equals("M")) {
                                 int m = trainDetails.getMiddleBerthCapacity()-1;
                                 trainDetails.setMiddleBerthCapacity(m);
                                 PassengerId+=1;
                                 passengerDetailsArrayList.add(new PassengerDetails(PassengerId,passengerName,passengerAge,passengerBerth, trainDetails.getTrainName(), trainDetails.getTrainNo()));
                                 trainImplementation.print(passengerBerth);
+                                trainDetails.setPassengerDetails(passengerDetailsArrayList);
                             } else if (berth.equals("U")) {
                                 int m = trainDetails.getUpperBerthCapacity()-1;
                                 trainDetails.setUpperBerthCapacity(m);
                                 PassengerId+=1;
                                 passengerDetailsArrayList.add(new PassengerDetails(PassengerId,passengerName,passengerAge,passengerBerth, trainDetails.getTrainName(), trainDetails.getTrainNo()));
                                 trainImplementation.print(passengerBerth);
+                                trainDetails.setPassengerDetails(passengerDetailsArrayList);
                             } else if (berth.equals("R")) {
                                 int m = trainDetails.getRACCapacity()-1;
                                 trainDetails.setRACCapacity(m);
                                 PassengerId+=1;
                                 passengerDetailsArrayList.add(new PassengerDetails(PassengerId,passengerName,passengerAge,passengerBerth, trainDetails.getTrainName(), trainDetails.getTrainNo()));
                                 trainImplementation.print(passengerBerth);
+                                trainDetails.setPassengerDetails(passengerDetailsArrayList);
                             } else if (berth.equals("W")) {
                                 int m = trainDetails.getWaitingListCapacity()-1;
                                 trainDetails.setWaitingListCapacity(m);
                                 PassengerId+=1;
                                 passengerDetailsArrayList.add(new PassengerDetails(PassengerId,passengerName,passengerAge,passengerBerth, trainDetails.getTrainName(), trainDetails.getTrainNo()));
                                 trainImplementation.print(passengerBerth);
+                                trainDetails.setPassengerDetails(passengerDetailsArrayList);
                             }
 
                         }
@@ -212,6 +218,14 @@ public class TrainMain {
                     System.out.println(trainDetailsArrayList.toString());break;
                 case 4:
                     System.out.println(passengerDetailsArrayList.toString());break;
+                case 6:
+                    System.out.println("Enter Train no:");
+                    int k = scanner.nextInt();
+                    for(TrainDetails t1 : trainDetailsArrayList){
+                        if(t1.getTrainNo()==k){
+                            System.out.println(t1.getPassengerDetails().toString());
+                        }
+                    }
                 case 5:
                     loopcase=false;
                     System.out.println("Exit");
